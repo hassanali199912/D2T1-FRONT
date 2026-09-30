@@ -15,7 +15,7 @@ Private Vite SPA. The UI is empty; add features under `src/`. Do not add a route
 
 ## Entry
 
-`index.html` mounts `#root` → `src/main.tsx` (StrictMode) → `src/App.tsx`. Global CSS is `src/index.css`. Static files go in `public/`.
+`index.html` mounts `#root` → `src/main.tsx` (StrictMode) → `src/provider/MainProvider.tsx` → `src/App.tsx`. `MainProvider` only mounts `ThemeProvider`, `CssBaseline`, and `LanguageSwitch`. Language toggle, document `lang`/`dir`, and `localStorage` live in `src/language/config.ts` (`switchLanguage`, `nextLanguageLabel`). Static files go in `public/`.
 
 ## TypeScript
 
@@ -35,7 +35,7 @@ Private Vite SPA. The UI is empty; add features under `src/`. Do not add a route
 
 ## UI
 
-Use functional components. Style with MUI (`sx` or `styled`) instead of new CSS files. When the first screen needs a theme, wrap the tree in `ThemeProvider` and `CssBaseline` in `src/main.tsx`.
+Use functional components. Style with MUI (`sx` or `styled`) instead of new CSS files. Keep language and direction logic in `src/language/config.ts`. Do not put it in `MainProvider` or `main.tsx`.
 
 ```tsx
 import Button from '@mui/material/Button'
