@@ -1,0 +1,28 @@
+---
+description: Route map and dashboard layout structure
+alwaysApply: true
+---
+
+# Routes and layout
+
+Define routes in `src/routes/index.tsx`. Keep path strings in `src/routes/paths.ts`.
+
+- `/` redirects to `/dashboard`
+- `/login` renders `LoginPage` with no dashboard shell
+- `/dashboard` renders inside `DashboardLayout`
+
+```tsx
+<Route element={<DashboardLayout />}>
+  <Route path={paths.dashboard} element={<DashboardPage />} />
+</Route>
+```
+
+Split the dashboard shell into small components under `src/layout/`. Do not merge them back into one file.
+
+- `DashboardLayout` — sidebar beside a column of header and main
+- `Sidebar` — `Logo` and `NavLinks`
+- `NavLinks` — `NavLink` items from `paths`
+- `Header` — top bar
+- `MainContent` — `<Outlet />` for the matched page
+- `Loader` — Suspense fallback and `hydrateFallbackElement`
+- `ErrorBoundary` — wraps the router; `RouteErrorBoundary` is the route `errorElement`

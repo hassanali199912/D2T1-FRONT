@@ -5,17 +5,18 @@ alwaysApply: true
 
 # front
 
-Private Vite SPA. The UI is empty; add features under `src/`. Do not add a router or state library until a feature needs one.
+Private Vite SPA. Add features under `src/`.
 
 ## Stack
 
 - React 19 + TypeScript, bundled by Vite 8 (`@vitejs/plugin-react`)
 - UI: MUI 9 with Emotion (`@mui/material`, `@emotion/react`, `@emotion/styled`)
+- Routing: `react-router-dom` (`RouterProvider` in `src/routes`)
 - Lint: ESLint flat config in `eslint.config.js` for `**/*.{ts,tsx}`
 
 ## Entry
 
-`index.html` mounts `#root` → `src/main.tsx` (StrictMode) → `src/provider/MainProvider.tsx` → `src/App.tsx`. `MainProvider` only mounts `ThemeProvider`, `CssBaseline`, and `LanguageSwitch`. Language toggle, document `lang`/`dir`, and `localStorage` live in `src/language/config.ts` (`switchLanguage`, `nextLanguageLabel`). Static files go in `public/`.
+`index.html` mounts `#root` → `src/main.tsx` (StrictMode) → `MainProvider` → `App` → `src/routes`. `MainProvider` only mounts `ThemeProvider`, `CssBaseline`, and `LanguageSwitch`. Language toggle, document `lang`/`dir`, and `localStorage` live in `src/language/config.ts` (`switchLanguage`, `nextLanguageLabel`). Static files go in `public/`.
 
 ## TypeScript
 

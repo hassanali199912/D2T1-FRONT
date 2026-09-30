@@ -1,16 +1,5 @@
-import { Typography } from "@mui/material"
-import { useTranslation } from "react-i18next"
+import AppRoutes from './routes/index.tsx'
 
-
-function App() {
-  const { t } = useTranslation();
-  return (
-    <>
-      <Typography variant="h1">
-        {t("welcome")}
-      </Typography>
-    </>
-  )
+export default function App() {
+    return <AppRoutes />
 }
-
-export default App
