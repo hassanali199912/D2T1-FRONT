@@ -1,12 +1,13 @@
 import { Typography } from "@mui/material"
+import { useTranslation } from "react-i18next"
 
 
 function App() {
-
+  const { t } = useTranslation();
   return (
     <>
       <Typography variant="h1">
-        Front End
+        {t("welcome")}
       </Typography>
     </>
   )
