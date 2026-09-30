@@ -1,0 +1,46 @@
+---
+description: Project map and conventions for the Vite + React + MUI frontend
+alwaysApply: true
+---
+
+# front
+
+Private Vite SPA. The UI is empty; add features under `src/`. Do not add a router or state library until a feature needs one.
+
+## Stack
+
+- React 19 + TypeScript, bundled by Vite 8 (`@vitejs/plugin-react`)
+- UI: MUI 9 with Emotion (`@mui/material`, `@emotion/react`, `@emotion/styled`)
+- Lint: ESLint flat config in `eslint.config.js` for `**/*.{ts,tsx}`
+
+## Entry
+
+`index.html` mounts `#root` → `src/main.tsx` (StrictMode) → `src/App.tsx`. Global CSS is `src/index.css`. Static files go in `public/`.
+
+## TypeScript
+
+`tsconfig.app.json` covers `src`. Keep these constraints:
+
+- `verbatimModuleSyntax`: use `import type` for types
+- `allowImportingTsExtensions`: import local modules with `.ts` / `.tsx`
+- `noUnusedLocals` / `noUnusedParameters`: delete unused symbols
+- `erasableSyntaxOnly`: no enums; use unions and `as const`
+
+## Commands
+
+- `npm run dev` — Vite dev server
+- `npm run build` — `tsc -b` then `vite build`
+- `npm run lint` — ESLint
+- `npm run preview` — serve the production build
+
+## UI
+
+Use functional components. Style with MUI (`sx` or `styled`) instead of new CSS files. When the first screen needs a theme, wrap the tree in `ThemeProvider` and `CssBaseline` in `src/main.tsx`.
+
+```tsx
+import Button from '@mui/material/Button'
+
+export default function App() {
+  return <Button variant="contained">Save</Button>
+}
+```
