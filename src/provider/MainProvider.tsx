@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import { theme } from '../theme.ts'
-import LanguageSwitch from '../components/LanguageSwitch.tsx'
+import LanguageSwitch from '../feature/pages/components/LanguageSwitch.tsx'
 import { I18nextProvider } from 'react-i18next';
 import { i18n } from '../language/index';
 

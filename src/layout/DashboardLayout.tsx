@@ -5,9 +5,9 @@ import Sidebar from './Sidebar.tsx'
 
 export default function DashboardLayout() {
     return (
-        <Box sx={{ display: 'flex', minHeight: '100vh' }}>
+        <Box sx={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
             <Sidebar />
-            <Box sx={{ display: 'flex', flex: 1, flexDirection: 'column', minWidth: 0 }}>
+            <Box sx={{ display: 'flex', flex: 1, flexDirection: 'column', minWidth: 0, minHeight: 0, overflow: 'hidden' }}>
                 <Header />
                 <MainContent />
             </Box>
