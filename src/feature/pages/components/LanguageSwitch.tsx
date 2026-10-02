@@ -1,5 +1,5 @@
 import { Button } from '@mui/material'
-import { nextLanguageLabel, switchLanguage } from '../language/config.ts'
+import { nextLanguageLabel, switchLanguage } from '../../../language/config.ts'
 
 export default function LanguageSwitch() {
 

@@ -1,9 +1,10 @@
-import { Typography } from '@mui/material'
+import { Box } from '@mui/material'
+import MainLogo from '../feature/pages/components/MainLogo.tsx'
 
 export default function Logo() {
     return (
-        <Typography variant="h3" sx={{ px: 2, py: 2.5 }}>
-            ITI
-        </Typography>
+        <Box sx={{ px: 2, py: 2.5 }}>
+            <MainLogo />
+        </Box>
     )
 }

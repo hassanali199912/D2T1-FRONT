@@ -1,3 +1,271 @@
 {
-    "welcome":"welcome"
+    "welcome": "welcome",
+    "nav": {
+        "dashboard": "Dashboard",
+        "documents": "Documents",
+        "askAnswers": "Ask & answers",
+        "claims": "Claims",
+        "approvals": "Approvals"
+    },
+    "dashboard": {
+        "description": "Shortcuts into your work, with your documents, claims, and decisions waiting for approval.",
+        "hints": {
+            "documents": "Files and forms",
+            "askAnswers": "Questions and replies",
+            "claims": "Expense requests",
+            "approvals": "Decisions waiting on you"
+        },
+        "tables": {
+            "documents": "My documents",
+            "claims": "My claims",
+            "approvals": "Approvable"
+        },
+        "columns": {
+            "name": "Name",
+            "type": "Type",
+            "updated": "Updated",
+            "status": "Status",
+            "number": "Number",
+            "subject": "Subject",
+            "amount": "Amount",
+            "submitted": "Submitted",
+            "request": "Request",
+            "requester": "Requester"
+        },
+        "status": {
+            "published": "Published",
+            "draft": "Draft",
+            "review": "Under review",
+            "approved": "Approved",
+            "rejected": "Rejected",
+            "pending": "Pending",
+            "needsInfo": "Needs info"
+        },
+        "docs": {
+            "leave": "Leave policy",
+            "travel": "Travel form",
+            "identity": "Identity copy"
+        },
+        "claims": {
+            "medical": "Medical expenses",
+            "travel": "Travel allowance",
+            "equipment": "Equipment"
+        },
+        "approvals": {
+            "leave": "Annual leave",
+            "purchase": "Purchase order",
+            "overtime": "Overtime hours"
+        },
+        "people": {
+            "sara": "Sara Adel",
+            "omar": "Omar Nabil",
+            "lina": "Lina Farid"
+        },
+        "types": {
+            "leave": "Leave",
+            "purchase": "Purchase",
+            "time": "Time"
+        }
+    },
+    "ask": {
+        "emptyTitle": "Ask a question",
+        "description": "Type a question and the assistant answers it here. This chat is not saved.",
+        "emptyHint": "Type a question and the system will answer it. This chat is not saved.",
+        "placeholder": "Write your question",
+        "send": "Send",
+        "thinking": "Answering…",
+        "answers": {
+            "greeting": "Hello. Ask about documents, leave, travel, claims, or approvals.",
+            "leave": "Annual leave follows the leave policy. Send a leave request, then it stays under Approvals until someone decides.",
+            "travel": "Use the travel form for a trip. The related claim stays under review until it is approved or rejected.",
+            "claims": "Claims cover expenses such as medical costs, travel allowance, and equipment. Each one is under review, approved, or rejected.",
+            "approvals": "Approvable items are requests waiting for a decision, such as leave, a purchase order, or overtime.",
+            "documents": "Documents are Word files in Arabic or English. A file is indexed, pending, or in error. Only indexed documents are used to answer.",
+            "fallback": "I could not find that in the indexed documents. Try a question about leave, travel, claims, approvals, or documents."
+        }
+    },
+    "documents": {
+        "listTitle": "My documents",
+        "description": "Word files in Arabic or English, and whether each one is indexed, pending, or in error.",
+        "add": "Add document",
+        "uploadTitle": "Upload a Word document",
+        "dropHint": "Drop a .docx file here",
+        "dropDetail": "or click to browse. Only .docx files are accepted.",
+        "upload": "Upload",
+        "cancel": "Cancel",
+        "fileRequired": "Choose a .docx file",
+        "fileInvalid": "Only .docx files are allowed",
+        "nameRequired": "Name is required",
+        "columns": {
+            "name": "Name",
+            "policyDate": "Policy date",
+            "type": "Type",
+            "status": "Status"
+        },
+        "types": {
+            "ar": "Arabic",
+            "en": "English"
+        },
+        "statuses": {
+            "indexed": "Indexed",
+            "pending": "Pending",
+            "error": "Error"
+        }
+    },
+    "claims": {
+        "listTitle": "Claims",
+        "description": "Every claim and where it stands, from draft through a final decision.",
+        "add": "New claim",
+        "formTitle": "New claim",
+        "formDescription": "Enter the incident, then wait on this page while the assistant reviews it.",
+        "create": "Create",
+        "submitReview": "Send for review",
+        "cancel": "Cancel",
+        "back": "Back to claims",
+        "languageLabel": "Description language",
+        "policyRequired": "Policy number is required",
+        "dateRequired": "Incident date is required",
+        "typeRequired": "Type is required",
+        "amountRequired": "Amount is required",
+        "amountInvalid": "Enter an amount greater than zero",
+        "descriptionRequired": "Description is required",
+        "columns": {
+            "policyNumber": "Policy number",
+            "incidentDate": "Incident date",
+            "type": "Type",
+            "amount": "Amount",
+            "description": "Description",
+            "status": "Status"
+        },
+        "types": {
+            "accident": "Accident",
+            "medical": "Medical",
+            "theft": "Theft",
+            "fire": "Fire",
+            "other": "Other"
+        },
+        "languages": {
+            "ar": "Arabic",
+            "en": "English"
+        },
+        "statuses": {
+            "draft": "Draft",
+            "running": "Running",
+            "awaiting_approval": "Awaiting approval",
+            "approved": "Approved",
+            "rejected": "Rejected",
+            "failed": "Failed"
+        },
+        "ai": {
+            "title": "Assistant response",
+            "idle": "Send the claim and the assistant will review it in this section.",
+            "processing": "The assistant is still processing this request.",
+            "waiting": "Waiting for the result.",
+            "result": "Result",
+            "results": {
+                "accident": "The accident details are enough to continue. The claim stays in review and is ready for the approval queue.",
+                "medical": "The visit amount fits a typical clinic claim after the deductible. The claim is ready for approval.",
+                "theft": "Coverage can apply, but the police report is still missing. The claim is held for approval with that note.",
+                "fire": "The fire amount is high and the notice looks late. The claim is sent to approval with a warning.",
+                "other": "This request does not match a standard covered type. It needs a manual check before approval."
+            }
+        }
+    },
+    "approvals": {
+        "listTitle": "Approval queue",
+        "description": "Decisions that still need a person to accept, reject, or edit.",
+        "empty": "No decisions are waiting for approval",
+        "columns": {
+            "policy": "Policy number",
+            "type": "Type",
+            "decision": "Proposed decision",
+            "anomalies": "Anomalies",
+            "action": "Action"
+        },
+        "review": "Review",
+        "reviewTitle": "Review decision",
+        "reviewDescription": "Read the proposed decision, the reason, the sources, the calculation, and anything unusual.",
+        "back": "Back to the queue",
+        "missing": "This decision is no longer in the queue",
+        "proposed": "Proposed decision",
+        "justification": "Justification",
+        "citations": "Citations",
+        "calculation": "Calculation",
+        "calcItem": "Item",
+        "calcAmount": "Amount",
+        "anomalies": "Anomalies",
+        "noAnomalies": "No anomalies",
+        "anomalyCount": "{{count}} anomalies",
+        "accept": "Accept",
+        "reject": "Reject",
+        "editAccept": "Edit and accept",
+        "editedDecision": "Edited decision",
+        "comment": "Comment",
+        "commentHint": "Required when you reject or edit",
+        "commentRequired": "A comment is required",
+        "decisionRequired": "The edited decision is required",
+        "justificationRequired": "Justification is required",
+        "confirmReject": "Confirm rejection",
+        "confirmEdit": "Confirm edit and accept",
+        "cancel": "Cancel",
+        "samples": {
+            "medical": {
+                "type": "Medical claim",
+                "decision": "Approve EGP 1,250",
+                "justification": "The invoice falls within the medical limit after the deductible.",
+                "citePolicy": "Policy, medical clause",
+                "citePolicyText": "Emergency visits are covered at 90% after the deductible.",
+                "citeInvoice": "Clinic invoice",
+                "citeInvoiceText": "Invoice total is EGP 1,500 on the visit date.",
+                "invoice": "Invoice",
+                "cover": "Coverage at 90%",
+                "deductible": "Deductible",
+                "payable": "Amount payable",
+                "late": "The visit was reported two days later"
+            },
+            "theft": {
+                "type": "Theft claim",
+                "decision": "Partially approve EGP 6,000 of EGP 8,700",
+                "justification": "The device is covered, but the police report is missing, so a lower amount is proposed.",
+                "citeClause": "Policy, theft clause",
+                "citeClauseText": "Portable devices are covered when a police report is attached.",
+                "citeInvoice": "Device invoice",
+                "citeInvoiceText": "The claimed device was purchased for EGP 8,700.",
+                "claimed": "Claimed amount",
+                "excluded": "Uncovered accessories",
+                "depreciation": "Depreciation",
+                "payable": "Proposed amount",
+                "missingReport": "Police report is not attached",
+                "aboveAverage": "The amount is above the average for this category"
+            },
+            "fire": {
+                "type": "Fire claim",
+                "decision": "Approve EGP 22,000",
+                "justification": "The kitchen damage is documented and falls under fire coverage.",
+                "citeClause": "Policy, fire clause",
+                "citeClauseText": "Fire damage is covered up to the stated limit.",
+                "citeSurvey": "Survey report",
+                "citeSurveyText": "The survey estimates the kitchen damage at EGP 25,000.",
+                "survey": "Survey estimate",
+                "limit": "Coverage limit",
+                "payable": "Amount payable",
+                "lateNotice": "Notice was sent 40 days after the incident"
+            }
+        }
+    },
+    "login": {
+        "title": "Sign in",
+        "subtitle": "Use your work email and password",
+        "email": "Email",
+        "password": "Password",
+        "submit": "Sign in",
+        "show": "Show",
+        "hide": "Hide",
+        "or": "or continue as",
+        "admin": "Admin",
+        "employees": "Employees",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Enter a valid email",
+        "passwordRequired": "Password is required"
+    }
 }

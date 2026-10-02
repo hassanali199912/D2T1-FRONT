@@ -7,8 +7,10 @@ export default function Sidebar() {
         <Box
             component="aside"
             sx={{
-                width: 240,
+                width: 268,
                 flexShrink: 0,
+                height: '100%',
+                overflow: 'auto',
                 bgcolor: 'background.paper',
                 borderInlineEnd: 1,
                 borderColor: 'divider',
