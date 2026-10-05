@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import { theme } from '../theme.ts'
-import LanguageSwitch from '../feature/pages/components/LanguageSwitch.tsx'
 import { I18nextProvider } from 'react-i18next';
 import { i18n } from '../language/index';
+import { QueryProvider } from './QueryProvider.tsx';
 
 type MainProviderProps = {
     children: ReactNode
@@ -11,12 +11,13 @@ type MainProviderProps = {
 
 export default function MainProvider({ children }: MainProviderProps) {
     return (
-        <ThemeProvider theme={theme}>
-            <I18nextProvider i18n={i18n}>
-                <CssBaseline />
-                <LanguageSwitch />
-                {children}
-            </I18nextProvider>
-        </ThemeProvider>
+        <QueryProvider>
+            <ThemeProvider theme={theme}>
+                <I18nextProvider i18n={i18n}>
+                    <CssBaseline />
+                    {children}
+                </I18nextProvider>
+            </ThemeProvider>
+        </QueryProvider>
     )
 }

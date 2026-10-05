@@ -10,12 +10,6 @@ export default function LanguageSwitch() {
             onClick={() => {
                 void switchLanguage()
             }}
-            sx={{
-                position: 'fixed',
-                top: 16,
-                insetInlineEnd: 16,
-                zIndex: (muiTheme) => muiTheme.zIndex.appBar,
-            }}
         >
             {nextLanguageLabel()}
         </Button>
