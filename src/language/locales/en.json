@@ -253,6 +253,11 @@
             }
         }
     },
+    "header": {
+        "logout": "Log out",
+        "guest": "Guest",
+        "employee": "Employee"
+    },
     "login": {
         "title": "Sign in",
         "subtitle": "Use your work email and password",
