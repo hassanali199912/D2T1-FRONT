@@ -1,24 +1,8 @@
 import { Avatar, Box, Button, Stack, Typography } from '@mui/material'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { useAuth } from '../provider/AuthProvider.tsx'
 import { useTranslation } from '../language/index.ts'
 import { navItems, paths } from '../routes/paths.ts'
-
-type Session = {
-    email: string
-    role: string
-}
-
-function readSession(): Session | null {
-    const raw = sessionStorage.getItem('session')
-    if (!raw) return null
-    try {
-        const parsed = JSON.parse(raw) as Partial<Session>
-        if (!parsed.email) return null
-        return { email: parsed.email, role: parsed.role ?? 'user' }
-    } catch {
-        return null
-    }
-}
 
 function nameFromEmail(email: string) {
     const local = email.split('@')[0] ?? email
@@ -47,17 +31,11 @@ export default function Header() {
         const nested = entry.to === paths.approvals || entry.to === paths.claims
         return nested && pathname.startsWith(`${entry.to}/`)
     })
-    const session = readSession()
-    const name = !session
-        ? t('header.guest')
-        : session.role === 'admin'
-            ? t('login.admin')
-            : session.role === 'employee'
-                ? t('header.employee')
-                : nameFromEmail(session.email)
+    const { user, logout } = useAuth()
+    const name = !user ? t('header.guest') : user.name || nameFromEmail(user.email)
 
-    function logout() {
-        sessionStorage.removeItem('session')
+    function signOut() {
+        logout()
         void navigate(paths.login)
     }
 
@@ -90,7 +68,7 @@ export default function Header() {
                         {name}
                     </Typography>
                 </Box>
-                <Button variant="outlined" size="small" onClick={logout}>
+                <Button variant="outlined" size="small" onClick={signOut}>
                     {t('header.logout')}
                 </Button>
 

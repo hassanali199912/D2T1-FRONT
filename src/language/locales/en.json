@@ -271,6 +271,7 @@
         "employees": "Employees",
         "emailRequired": "Email is required",
         "emailInvalid": "Enter a valid email",
-        "passwordRequired": "Password is required"
+        "passwordRequired": "Password is required",
+        "failed": "Could not sign in. Check the email and password."
     }
 }

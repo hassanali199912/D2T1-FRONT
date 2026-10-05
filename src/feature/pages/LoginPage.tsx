@@ -10,10 +10,10 @@ import {
     TextField,
     Typography,
 } from '@mui/material'
-import MainLogo from './components/MainLogo.tsx'
+import { useAuth } from '../../provider/AuthProvider.tsx'
+import { paths } from '../../routes/paths.ts'
 import { useTranslation } from '../../language/index.ts'
-
-type Role = 'user' | 'admin' | 'employee'
+import MainLogo from './components/MainLogo.tsx'
 
 type FieldErrors = {
     email?: string
@@ -21,25 +21,32 @@ type FieldErrors = {
 }
 
 const demoAccounts = {
-    admin: { email: 'admin@iti.com', role: 'admin' },
-    employee: { email: 'employee@iti.com', role: 'employee' },
+    admin: { email: 'admin@example.com', password: 'password1' },
+    employee: { email: 'employee@example.com', password: 'password1' },
 } as const
-
-function signIn(email: string, role: Role) {
-    sessionStorage.setItem('session', JSON.stringify({ email, role }))
-}
 
 export default function LoginPage() {
     const { t } = useTranslation()
     const navigate = useNavigate()
+    const { login } = useAuth()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [showPassword, setShowPassword] = useState(false)
+    const [pending, setPending] = useState(false)
+    const [submitError, setSubmitError] = useState('')
     const [errors, setErrors] = useState<FieldErrors>({})
 
-    function enter(nextEmail: string, role: Role) {
-        signIn(nextEmail, role)
-        void navigate('/dashboard')
+    async function enter(nextEmail: string, nextPassword: string) {
+        setSubmitError('')
+        setPending(true)
+        try {
+            await login(nextEmail, nextPassword)
+            void navigate(paths.dashboard)
+        } catch {
+            setSubmitError(t('login.failed'))
+        } finally {
+            setPending(false)
+        }
     }
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -60,7 +67,14 @@ export default function LoginPage() {
         setErrors(nextErrors)
         if (nextErrors.email || nextErrors.password) return
 
-        enter(trimmedEmail, 'user')
+        void enter(trimmedEmail, password)
+    }
+
+    function enterAs(account: { email: string; password: string }) {
+        setEmail(account.email)
+        setPassword(account.password)
+        setErrors({})
+        void enter(account.email, account.password)
     }
 
     return (
@@ -148,7 +162,12 @@ export default function LoginPage() {
                                     },
                                 }}
                             />
-                            <Button type="submit" variant="contained" size="large" fullWidth>
+                            {submitError ? (
+                                <Typography variant="body2" color="error">
+                                    {submitError}
+                                </Typography>
+                            ) : null}
+                            <Button type="submit" variant="contained" size="large" fullWidth disabled={pending}>
                                 {t('login.submit')}
                             </Button>
                         </Stack>
@@ -164,7 +183,8 @@ export default function LoginPage() {
                         <Button
                             type="button"
                             variant="outlined"
-                            onClick={() => enter(demoAccounts.admin.email, demoAccounts.admin.role)}
+                            onClick={() => enterAs(demoAccounts.admin)}
+                            disabled={pending}
                             sx={{
                                 flex: 1,
                                 py: 1.5,
@@ -188,7 +208,8 @@ export default function LoginPage() {
                         <Button
                             type="button"
                             variant="outlined"
-                            onClick={() => enter(demoAccounts.employee.email, demoAccounts.employee.role)}
+                            onClick={() => enterAs(demoAccounts.employee)}
+                            disabled={pending}
                             sx={{
                                 flex: 1,
                                 py: 1.5,
