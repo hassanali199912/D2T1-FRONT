@@ -4,6 +4,7 @@ import { theme } from '../theme.ts'
 import { I18nextProvider } from 'react-i18next';
 import { i18n } from '../language/index';
 import { QueryProvider } from './QueryProvider.tsx';
+import { AuthProvider } from './AuthProvider.tsx';
 
 type MainProviderProps = {
     children: ReactNode
@@ -12,12 +13,14 @@ type MainProviderProps = {
 export default function MainProvider({ children }: MainProviderProps) {
     return (
         <QueryProvider>
-            <ThemeProvider theme={theme}>
-                <I18nextProvider i18n={i18n}>
-                    <CssBaseline />
-                    {children}
-                </I18nextProvider>
-            </ThemeProvider>
+            <AuthProvider>
+                <ThemeProvider theme={theme}>
+                    <I18nextProvider i18n={i18n}>
+                        <CssBaseline />
+                        {children}
+                    </I18nextProvider>
+                </ThemeProvider>
+            </AuthProvider>
         </QueryProvider>
     )
 }
