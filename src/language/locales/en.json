@@ -86,30 +86,63 @@
     },
     "documents": {
         "listTitle": "My documents",
-        "description": "Word files in Arabic or English, and whether each one is indexed, pending, or in error.",
+        "description": "Policies you upload as PDF or Word. Each file is saved, then indexed.",
         "add": "Add document",
-        "uploadTitle": "Upload a Word document",
-        "dropHint": "Drop a .docx file here",
-        "dropDetail": "or click to browse. Only .docx files are accepted.",
+        "uploadTitle": "Upload a policy",
+        "dropHint": "Drop a PDF or Word file here",
+        "dropDetail": "or click to browse. PDF or DOCX, up to 10 MB.",
         "upload": "Upload",
         "cancel": "Cancel",
-        "fileRequired": "Choose a .docx file",
-        "fileInvalid": "Only .docx files are allowed",
+        "delete": "Delete",
+        "deleteConfirm": "Delete this policy and its file?",
+        "uploadFailed": "Upload failed",
+        "loadFailed": "Could not load policies",
+        "deleteFailed": "Could not delete this policy",
+        "fileRequired": "Choose a PDF or DOCX file",
+        "fileInvalid": "Only PDF and DOCX files are allowed",
+        "fileTooLarge": "The file must be 10 MB or smaller",
         "nameRequired": "Name is required",
+        "nameTooLong": "Name must be 160 characters or fewer",
+        "versionRequired": "Version is required",
+        "versionTooLong": "Version must be 20 characters or fewer",
+        "effectiveFromRequired": "Effective from is required",
         "columns": {
             "name": "Name",
-            "policyDate": "Policy date",
             "type": "Type",
-            "status": "Status"
+            "language": "Language",
+            "version": "Version",
+            "effectiveFrom": "Effective from",
+            "status": "Status",
+            "actions": "Actions"
+        },
+        "fields": {
+            "version": "Version",
+            "language": "Language",
+            "effectiveFrom": "Effective from",
+            "effectiveTo": "Effective to",
+            "description": "Description"
         },
         "types": {
+            "HEALTH": "Health",
+            "MOTOR": "Motor",
+            "PROPERTY": "Property"
+        },
+        "languages": {
             "ar": "Arabic",
             "en": "English"
         },
         "statuses": {
-            "indexed": "Indexed",
-            "pending": "Pending",
-            "error": "Error"
+            "UPLOADED": "Uploaded",
+            "PROCESSING": "Processing",
+            "INDEXED": "Indexed",
+            "FAILED": "Failed"
+        },
+        "stages": {
+            "EXTRACTING": "Extracting",
+            "CLEANING": "Cleaning",
+            "CHUNKING": "Chunking",
+            "EMBEDDING": "Embedding",
+            "INDEXING": "Indexing"
         }
     },
     "claims": {

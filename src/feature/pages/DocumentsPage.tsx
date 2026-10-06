@@ -1,27 +1,36 @@
 import { useState } from 'react'
-import { Box, Button, Stack, Typography } from '@mui/material'
-import DocumentsTable from './documents/DocumentsTable.tsx'
-import { initialDocuments } from './documents/library.ts'
-import UploadDocxDialog from './documents/UploadDocxDialog.tsx'
-import type { DocumentType, LibraryDocument } from './documents/types.ts'
+import { useMutation, useQuery } from '@tanstack/react-query'
+import { Box, Button, CircularProgress, Stack, Typography } from '@mui/material'
+import { queryClient } from '../../config/queryBase/queryClient.ts'
 import { useTranslation } from '../../language/index.ts'
+import { createPolicy, deletePolicy, listPolicies, policiesQueryKey, policyErrorMessage, policyStillIndexing } from '../policies/api.ts'
+import type { CreatePolicyInput } from '../policies/types.ts'
+import DocumentsTable from './documents/DocumentsTable.tsx'
+import UploadDocxDialog from './documents/UploadDocxDialog.tsx'
 
 export default function DocumentsPage() {
     const { t } = useTranslation()
-    const [rows, setRows] = useState<LibraryDocument[]>(initialDocuments)
     const [uploadOpen, setUploadOpen] = useState(false)
+    const policies = useQuery({
+        queryKey: policiesQueryKey,
+        queryFn: listPolicies,
+        refetchInterval: (query) => (query.state.data?.some(policyStillIndexing) ? 3000 : false),
+    })
+    const remove = useMutation({
+        mutationFn: deletePolicy,
+        onSuccess: async () => {
+            await queryClient.invalidateQueries({ queryKey: policiesQueryKey })
+        },
+    })
 
-    function addDocument(document: { name: string; type: DocumentType }) {
-        setRows((current) => [
-            {
-                id: crypto.randomUUID(),
-                name: document.name,
-                policyDate: new Date().toISOString().slice(0, 10),
-                type: document.type,
-                status: 'pending',
-            },
-            ...current,
-        ])
+    async function upload(input: CreatePolicyInput) {
+        await createPolicy(input)
+        await queryClient.invalidateQueries({ queryKey: policiesQueryKey })
+    }
+
+    function requestDelete(id: string) {
+        if (!window.confirm(t('documents.deleteConfirm'))) return
+        remove.mutate(id)
     }
 
     return (
@@ -37,8 +46,29 @@ export default function DocumentsPage() {
                     {t('documents.add')}
                 </Button>
             </Stack>
-            <DocumentsTable rows={rows} />
-            <UploadDocxDialog open={uploadOpen} onClose={() => setUploadOpen(false)} onUpload={addDocument} />
+            {policies.isPending ? (
+                <Box sx={{ display: 'grid', placeItems: 'center', py: 6 }}>
+                    <CircularProgress />
+                </Box>
+            ) : null}
+            {policies.isError ? (
+                <Typography variant="body2" color="error">
+                    {policyErrorMessage(policies.error) || t('documents.loadFailed')}
+                </Typography>
+            ) : null}
+            {remove.isError ? (
+                <Typography variant="body2" color="error">
+                    {policyErrorMessage(remove.error) || t('documents.deleteFailed')}
+                </Typography>
+            ) : null}
+            {policies.data ? (
+                <DocumentsTable
+                    rows={policies.data}
+                    deletingId={remove.isPending ? remove.variables : null}
+                    onDelete={requestDelete}
+                />
+            ) : null}
+            <UploadDocxDialog open={uploadOpen} onClose={() => setUploadOpen(false)} onUpload={upload} />
         </Stack>
     )
 }

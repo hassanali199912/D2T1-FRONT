@@ -36,7 +36,13 @@ class ApiClient implements HttpClient {
 
     async postFormData<T>(url: string, formData: FormData): Promise<T> {
         const res = await axiosInstance.post(url, formData, {
-            headers: { 'Content-Type': 'multipart/form-data' },
+            headers: { 'Content-Type': undefined },
+            transformRequest: [
+                (data: FormData, headers) => {
+                    if (headers && typeof headers.delete === 'function') headers.delete('Content-Type')
+                    return data
+                },
+            ],
         });
         return res.data;
     }

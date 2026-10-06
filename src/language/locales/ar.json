@@ -86,30 +86,63 @@
     },
     "documents": {
         "listTitle": "مستنداتي",
-        "description": "ملفات وورد بالعربية أو الإنجليزية، وحالة كل ملف: مفهرس أو قيد الانتظار أو به خطأ.",
+        "description": "وثائق ترفعها بصيغة PDF أو وورد. يُحفظ الملف ثم تُفهرس محتوياته.",
         "add": "إضافة مستند",
-        "uploadTitle": "رفع مستند وورد",
-        "dropHint": "أفلت ملف docx هنا",
-        "dropDetail": "أو اضغط للاختيار. يُقبل ملف docx فقط.",
+        "uploadTitle": "رفع وثيقة",
+        "dropHint": "أفلت ملف PDF أو وورد هنا",
+        "dropDetail": "أو اضغط للاختيار. PDF أو DOCX، بحد أقصى 10 ميجابايت.",
         "upload": "رفع",
         "cancel": "إلغاء",
-        "fileRequired": "اختر ملف docx",
-        "fileInvalid": "يُسمح بملفات docx فقط",
+        "delete": "حذف",
+        "deleteConfirm": "حذف هذه الوثيقة وملفها؟",
+        "uploadFailed": "تعذر الرفع",
+        "loadFailed": "تعذر تحميل الوثائق",
+        "deleteFailed": "تعذر حذف هذه الوثيقة",
+        "fileRequired": "اختر ملف PDF أو DOCX",
+        "fileInvalid": "يُسمح بملفات PDF و DOCX فقط",
+        "fileTooLarge": "يجب ألا يتجاوز الملف 10 ميجابايت",
         "nameRequired": "الاسم مطلوب",
+        "nameTooLong": "الاسم 160 حرفاً كحد أقصى",
+        "versionRequired": "الإصدار مطلوب",
+        "versionTooLong": "الإصدار 20 حرفاً كحد أقصى",
+        "effectiveFromRequired": "تاريخ البداية مطلوب",
         "columns": {
             "name": "الاسم",
-            "policyDate": "تاريخ الوثيقة",
             "type": "النوع",
-            "status": "الحالة"
+            "language": "اللغة",
+            "version": "الإصدار",
+            "effectiveFrom": "ساري من",
+            "status": "الحالة",
+            "actions": "إجراءات"
+        },
+        "fields": {
+            "version": "الإصدار",
+            "language": "اللغة",
+            "effectiveFrom": "ساري من",
+            "effectiveTo": "ساري حتى",
+            "description": "الوصف"
         },
         "types": {
+            "HEALTH": "صحي",
+            "MOTOR": "سيارات",
+            "PROPERTY": "ممتلكات"
+        },
+        "languages": {
             "ar": "العربية",
             "en": "الإنجليزية"
         },
         "statuses": {
-            "indexed": "مفهرس",
-            "pending": "قيد الانتظار",
-            "error": "خطأ"
+            "UPLOADED": "مرفوع",
+            "PROCESSING": "قيد المعالجة",
+            "INDEXED": "مفهرس",
+            "FAILED": "فشل"
+        },
+        "stages": {
+            "EXTRACTING": "استخراج",
+            "CLEANING": "تنظيف",
+            "CHUNKING": "تقسيم",
+            "EMBEDDING": "تضمين",
+            "INDEXING": "فهرسة"
         }
     },
     "claims": {
