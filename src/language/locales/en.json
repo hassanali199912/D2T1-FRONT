@@ -69,20 +69,16 @@
     },
     "ask": {
         "emptyTitle": "Ask a question",
-        "description": "Type a question and the assistant answers it here. This chat is not saved.",
-        "emptyHint": "Type a question and the system will answer it. This chat is not saved.",
+        "description": "Questions are searched against the indexed policies. This chat is not saved.",
+        "emptyHint": "Ask about an indexed policy. This chat is not saved.",
         "placeholder": "Write your question",
         "send": "Send",
         "thinking": "Answering…",
-        "answers": {
-            "greeting": "Hello. Ask about documents, leave, travel, claims, or approvals.",
-            "leave": "Annual leave follows the leave policy. Send a leave request, then it stays under Approvals until someone decides.",
-            "travel": "Use the travel form for a trip. The related claim stays under review until it is approved or rejected.",
-            "claims": "Claims cover expenses such as medical costs, travel allowance, and equipment. Each one is under review, approved, or rejected.",
-            "approvals": "Approvable items are requests waiting for a decision, such as leave, a purchase order, or overtime.",
-            "documents": "Documents are Word files in Arabic or English. A file is indexed, pending, or in error. Only indexed documents are used to answer.",
-            "fallback": "I could not find that in the indexed documents. Try a question about leave, travel, claims, approvals, or documents."
-        }
+        "citations": "Citations",
+        "version": "Version {{version}}",
+        "page": "Page {{page}}",
+        "noEvidence": "Not enough information in the indexed policies.",
+        "failed": "Could not search the policies."
     },
     "documents": {
         "listTitle": "My documents",
