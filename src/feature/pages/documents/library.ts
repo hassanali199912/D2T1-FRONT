@@ -1,10 +1,4 @@
-import type { LibraryDocument } from './types.ts'
-
-export const initialDocuments: LibraryDocument[] = [
-    { id: 'doc-1', name: 'سياسة الإجازات', policyDate: '2026-01-12', type: 'ar', status: 'indexed' },
-    { id: 'doc-2', name: 'Travel form', policyDate: '2026-02-03', type: 'en', status: 'pending' },
-    { id: 'doc-3', name: 'دليل الموظف', policyDate: '2025-11-20', type: 'ar', status: 'error' },
-]
+const MAX_FILE_BYTES = 10 * 1024 * 1024
 
 export function formatPolicyDate(iso: string, language: string) {
     return new Intl.DateTimeFormat(language, {
@@ -14,10 +8,15 @@ export function formatPolicyDate(iso: string, language: string) {
     }).format(new Date(iso))
 }
 
-export function isDocxFile(file: File) {
-    return file.name.toLowerCase().endsWith('.docx')
+export function isPolicyFile(file: File) {
+    const name = file.name.toLowerCase()
+    return name.endsWith('.pdf') || name.endsWith('.docx')
 }
 
-export function nameFromDocx(file: File) {
-    return file.name.replace(/\.docx$/i, '')
+export function isPolicyFileTooLarge(file: File) {
+    return file.size > MAX_FILE_BYTES
+}
+
+export function nameFromPolicyFile(file: File) {
+    return file.name.replace(/\.(pdf|docx)$/i, '')
 }
