@@ -143,61 +143,86 @@
     },
     "claims": {
         "listTitle": "Claims",
-        "description": "Every claim and where it stands, from draft through a final decision.",
+        "description": "Submitted claims, their status, and who created them.",
         "add": "New claim",
         "formTitle": "New claim",
-        "formDescription": "Enter the incident, then wait on this page while the assistant reviews it.",
+        "formDescription": "Choose a policy and describe the incident. The assistant then reviews the claim against that policy.",
         "create": "Create",
         "submitReview": "Send for review",
         "cancel": "Cancel",
         "back": "Back to claims",
-        "languageLabel": "Description language",
-        "policyRequired": "Policy number is required",
+        "loadFailed": "Could not load claims",
+        "previous": "Previous",
+        "next": "Next",
+        "page": "Page {{page}} of {{pages}}",
+        "policyRequired": "Policy is required",
         "dateRequired": "Incident date is required",
+        "dateFuture": "Incident date cannot be after today",
         "typeRequired": "Type is required",
         "amountRequired": "Amount is required",
         "amountInvalid": "Enter an amount greater than zero",
         "descriptionRequired": "Description is required",
         "columns": {
-            "policyNumber": "Policy number",
+            "claimNumber": "Claim number",
+            "policy": "Policy",
             "incidentDate": "Incident date",
             "type": "Type",
             "amount": "Amount",
             "description": "Description",
-            "status": "Status"
+            "status": "Status",
+            "createdBy": "Created by"
         },
         "types": {
-            "accident": "Accident",
-            "medical": "Medical",
-            "theft": "Theft",
-            "fire": "Fire",
-            "other": "Other"
+            "COLLISION": "Collision",
+            "THEFT": "Theft",
+            "FIRE": "Fire",
+            "OTHER": "Other"
         },
         "languages": {
             "ar": "Arabic",
             "en": "English"
         },
         "statuses": {
-            "draft": "Draft",
-            "running": "Running",
-            "awaiting_approval": "Awaiting approval",
-            "approved": "Approved",
-            "rejected": "Rejected",
-            "failed": "Failed"
+            "DRAFT": "Draft",
+            "SUBMITTED": "Submitted",
+            "UNDER_REVIEW": "Under review",
+            "APPROVED": "Approved",
+            "REJECTED": "Rejected"
+        },
+        "decisions": {
+            "APPROVE": "Approve",
+            "REJECT": "Reject",
+            "REVIEW": "Review"
+        },
+        "errors": {
+            "POLICY_NOT_FOUND": "That policy was not found.",
+            "INVALID_INCIDENT_DATE": "The incident date is not valid.",
+            "NO_APPLICABLE_POLICY_VERSION": "No single policy version covers that incident date.",
+            "UNAUTHORIZED_CLAIM_ACCESS": "You cannot open this claim.",
+            "ANALYSIS_FAILED": "Analysis failed.",
+            "failed": "Could not save or analyze this claim."
         },
         "ai": {
             "title": "Assistant response",
             "idle": "Send the claim and the assistant will review it in this section.",
             "processing": "The assistant is still processing this request.",
             "waiting": "Waiting for the result.",
-            "result": "Result",
-            "results": {
-                "accident": "The accident details are enough to continue. The claim stays in review and is ready for the approval queue.",
-                "medical": "The visit amount fits a typical clinic claim after the deductible. The claim is ready for approval.",
-                "theft": "Coverage can apply, but the police report is still missing. The claim is held for approval with that note.",
-                "fire": "The fire amount is high and the notice looks late. The claim is sent to approval with a warning.",
-                "other": "This request does not match a standard covered type. It needs a manual check before approval."
-            }
+            "noEvidence": "Not enough information in the policy to analyze this claim.",
+            "recommendation": "Recommendation",
+            "financials": "Financials",
+            "claimed": "Claimed",
+            "limit": "Coverage limit",
+            "deductible": "Deductible",
+            "payout": "Payout",
+            "coverage": "Coverage",
+            "covered": "Covered",
+            "notCovered": "Not covered",
+            "exclusions": "Exclusions",
+            "anomalies": "Anomalies",
+            "citations": "Citations",
+            "version": "Version",
+            "versionValue": "Version {{version}}",
+            "page": "Page {{page}}"
         }
     },
     "approvals": {

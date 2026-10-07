@@ -1,11 +1,17 @@
 import axios from 'axios'
 import { api } from '../../config/axios/index.ts'
-import type { CreatePolicyInput, Policy } from './types.ts'
+import type { CreatePolicyInput, Policy, PolicyOption } from './types.ts'
 
 export const policiesQueryKey = ['policies'] as const
 
+export const policyOptionsQueryKey = ['policies', 'options'] as const
+
 export function listPolicies() {
     return api.get<Policy[]>('/policies')
+}
+
+export function listPolicyOptions() {
+    return api.get<PolicyOption[]>('/policies/options')
 }
 
 export function createPolicy(input: CreatePolicyInput) {

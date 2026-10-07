@@ -10,6 +10,14 @@ export type PolicyStatus = (typeof policyStatuses)[number]
 export const policyStages = ['EXTRACTING', 'CLEANING', 'CHUNKING', 'EMBEDDING', 'INDEXING'] as const
 export type PolicyStage = (typeof policyStages)[number]
 
+export type PolicyOption = {
+    id: string
+    name: string
+    version: string
+    language: PolicyLanguage
+    type: PolicyType
+}
+
 export type Policy = {
     id: string
     name: string
