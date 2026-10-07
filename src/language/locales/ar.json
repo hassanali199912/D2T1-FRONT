@@ -23,6 +23,7 @@
         "columns": {
             "name": "الاسم",
             "type": "النوع",
+            "version": "الإصدار",
             "updated": "آخر تحديث",
             "status": "الحالة",
             "number": "الرقم",
@@ -30,41 +31,9 @@
             "amount": "المبلغ",
             "submitted": "تاريخ التقديم",
             "request": "الطلب",
-            "requester": "مقدم الطلب"
-        },
-        "status": {
-            "published": "منشور",
-            "draft": "مسودة",
-            "review": "قيد المراجعة",
-            "approved": "موافق عليه",
-            "rejected": "مرفوض",
-            "pending": "بانتظار الموافقة",
-            "needsInfo": "بحاجة لمعلومات"
-        },
-        "docs": {
-            "leave": "سياسة الإجازات",
-            "travel": "نموذج السفر",
-            "identity": "صورة الهوية"
-        },
-        "claims": {
-            "medical": "مصروفات طبية",
-            "travel": "بدل سفر",
-            "equipment": "معدات"
-        },
-        "approvals": {
-            "leave": "إجازة سنوية",
-            "purchase": "أمر شراء",
-            "overtime": "ساعات إضافية"
-        },
-        "people": {
-            "sara": "سارة عادل",
-            "omar": "عمر نبيل",
-            "lina": "لينا فريد"
-        },
-        "types": {
-            "leave": "إجازة",
-            "purchase": "مشتريات",
-            "time": "وقت"
+            "requester": "مقدم الطلب",
+            "policy": "الوثيقة",
+            "decision": "القرار"
         }
     },
     "ask": {
@@ -227,18 +196,31 @@
     },
     "approvals": {
         "listTitle": "طابور الموافقات",
-        "description": "قرارات ما زالت تحتاج شخصاً لقبولها أو رفضها أو تعديلها.",
+        "description": "قرارات المطالبات التي ما زالت تحتاج مديراً لقبولها أو رفضها أو تعديلها.",
         "empty": "لا توجد قرارات بانتظار الموافقة",
+        "unauthorized": "الموافقات متاحة للمديرين فقط.",
+        "loadFailed": "تعذر تحميل الموافقات",
+        "previous": "السابق",
+        "next": "التالي",
+        "page": "صفحة {{page}} من {{pages}}",
         "columns": {
-            "policy": "رقم الوثيقة",
+            "claimNumber": "رقم المطالبة",
+            "policy": "الوثيقة",
             "type": "النوع",
             "decision": "القرار المقترح",
             "anomalies": "الشذوذات",
             "action": "الإجراء"
         },
+        "statuses": {
+            "PENDING": "بانتظار الموافقة",
+            "APPROVED": "موافق عليها",
+            "REJECTED": "مرفوضة",
+            "EDITED_AND_APPROVED": "عُدّلت وقُبلت",
+            "CANCELLED": "ملغاة"
+        },
         "review": "مراجعة",
         "reviewTitle": "مراجعة القرار",
-        "reviewDescription": "راجع القرار المقترح والتبرير والاستشهادات وجدول الحساب والشذوذات.",
+        "reviewDescription": "اطلع على توصية المساعد، ثم اقبلها أو ارفضها أو عدّل مبلغ التعويض النهائي.",
         "back": "العودة إلى الطابور",
         "missing": "هذا القرار لم يعد في الطابور",
         "proposed": "القرار المقترح",
@@ -247,64 +229,33 @@
         "calculation": "جدول الحساب",
         "calcItem": "البند",
         "calcAmount": "المبلغ",
+        "calcClaimed": "المبلغ المطالب به",
+        "calcLimit": "حد التغطية",
+        "calcDeductible": "التحمل",
+        "calcPayout": "تعويض المساعد",
         "anomalies": "الشذوذات",
         "noAnomalies": "لا توجد شذوذات",
         "anomalyCount": "{{count}} شذوذات",
+        "versionValue": "الإصدار {{version}}",
+        "pageValue": "صفحة {{page}}",
         "accept": "قبول",
         "reject": "رفض",
         "editAccept": "تعديل وقبول",
-        "editedDecision": "القرار بعد التعديل",
+        "finalDecision": "القرار النهائي",
+        "finalPayout": "التعويض النهائي",
+        "payoutRequired": "أدخل التعويض النهائي",
         "comment": "التعليق",
         "commentHint": "إجباري عند الرفض أو التعديل",
         "commentRequired": "التعليق إجباري",
-        "decisionRequired": "القرار المعدّل مطلوب",
-        "justificationRequired": "التبرير مطلوب",
         "confirmReject": "تأكيد الرفض",
         "confirmEdit": "تأكيد التعديل والقبول",
         "cancel": "إلغاء",
-        "samples": {
-            "medical": {
-                "type": "مطالبة طبية",
-                "decision": "الموافقة على صرف 1,250 ج.م",
-                "justification": "الفاتورة ضمن حد التغطية الطبية بعد خصم التحمل.",
-                "citePolicy": "وثيقة التأمين، البند الطبي",
-                "citePolicyText": "تُغطى زيارات الطوارئ بنسبة 90٪ بعد التحمل.",
-                "citeInvoice": "فاتورة العيادة",
-                "citeInvoiceText": "إجمالي الفاتورة 1,500 ج.م في تاريخ الزيارة.",
-                "invoice": "الفاتورة",
-                "cover": "التغطية بنسبة 90٪",
-                "deductible": "التحمل",
-                "payable": "المبلغ المستحق",
-                "late": "أُبلغ عن الزيارة بعد يومين"
-            },
-            "theft": {
-                "type": "مطالبة سرقة",
-                "decision": "موافقة جزئية بمبلغ 6,000 ج.م من أصل 8,700",
-                "justification": "الجهاز مغطى، لكن محضر الشرطة غير مرفق، لذلك يُقترح مبلغ أقل.",
-                "citeClause": "وثيقة التأمين، بند السرقة",
-                "citeClauseText": "تُغطى الأجهزة المحمولة عند إرفاق محضر الشرطة.",
-                "citeInvoice": "فاتورة الجهاز",
-                "citeInvoiceText": "الجهاز المطالَب به اشتري بمبلغ 8,700 ج.م.",
-                "claimed": "المبلغ المطالَب به",
-                "excluded": "ملحقات غير مغطاة",
-                "depreciation": "الإهلاك",
-                "payable": "المبلغ المقترح",
-                "missingReport": "محضر الشرطة غير مرفق",
-                "aboveAverage": "المبلغ أعلى من متوسط هذه الفئة"
-            },
-            "fire": {
-                "type": "مطالبة حريق",
-                "decision": "الموافقة على 22,000 ج.م",
-                "justification": "أضرار المطبخ موثقة وتقع ضمن تغطية الحريق.",
-                "citeClause": "وثيقة التأمين، بند الحريق",
-                "citeClauseText": "تُغطى أضرار الحريق حتى حد الوثيقة.",
-                "citeSurvey": "تقرير المعاينة",
-                "citeSurveyText": "تقدّر المعاينة أضرار المطبخ بمبلغ 25,000 ج.م.",
-                "survey": "تقدير المعاينة",
-                "limit": "حد التغطية",
-                "payable": "المبلغ المستحق",
-                "lateNotice": "الإخطار تأخر 40 يوماً عن الحادث"
-            }
+        "errors": {
+            "UNAUTHORIZED_REVIEWER": "الموافقات متاحة للمديرين فقط.",
+            "APPROVAL_NOT_PENDING": "هذه الموافقة لم تعد بانتظار القرار.",
+            "INVALID_REJECTION_REASON": "تعليق الرفض مطلوب.",
+            "INVALID_FINAL_PAYOUT": "التعويض أعلى من الحد المسموح.",
+            "failed": "تعذر إتمام هذه المراجعة."
         }
     },
     "header": {

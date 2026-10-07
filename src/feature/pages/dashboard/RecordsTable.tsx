@@ -1,17 +1,5 @@
 import type { ReactNode } from 'react'
-import { Chip, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
-import { useTranslation } from '../../../language/index.ts'
-import type { Status } from './records.ts'
-
-const statusColor: Record<Status, 'success' | 'default' | 'warning' | 'error' | 'info'> = {
-    published: 'success',
-    draft: 'default',
-    review: 'warning',
-    approved: 'success',
-    rejected: 'error',
-    pending: 'warning',
-    needsInfo: 'info',
-}
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
 
 type Column<Row> = {
     header: string
@@ -22,12 +10,6 @@ type RecordsTableProps<Row extends { id: string }> = {
     title: string
     columns: Column<Row>[]
     rows: readonly Row[]
-}
-
-export function StatusChip({ status }: { status: Status }) {
-    const { t } = useTranslation()
-
-    return <Chip size="small" color={statusColor[status]} label={t(`dashboard.status.${status}`)} />
 }
 
 export default function RecordsTable<Row extends { id: string }>({ title, columns, rows }: RecordsTableProps<Row>) {
