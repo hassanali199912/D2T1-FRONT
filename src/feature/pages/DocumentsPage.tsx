@@ -14,7 +14,7 @@ export default function DocumentsPage() {
     const policies = useQuery({
         queryKey: policiesQueryKey,
         queryFn: listPolicies,
-        refetchInterval: (query) => (query.state.data?.some(policyStillIndexing) ? 3000 : false),
+        refetchInterval: (query) => (query.state.data?.some(policyStillIndexing) ? 10_000 : false),
     })
     const remove = useMutation({
         mutationFn: deletePolicy,
