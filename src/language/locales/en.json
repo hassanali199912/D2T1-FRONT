@@ -23,6 +23,7 @@
         "columns": {
             "name": "Name",
             "type": "Type",
+            "version": "Version",
             "updated": "Updated",
             "status": "Status",
             "number": "Number",
@@ -30,41 +31,9 @@
             "amount": "Amount",
             "submitted": "Submitted",
             "request": "Request",
-            "requester": "Requester"
-        },
-        "status": {
-            "published": "Published",
-            "draft": "Draft",
-            "review": "Under review",
-            "approved": "Approved",
-            "rejected": "Rejected",
-            "pending": "Pending",
-            "needsInfo": "Needs info"
-        },
-        "docs": {
-            "leave": "Leave policy",
-            "travel": "Travel form",
-            "identity": "Identity copy"
-        },
-        "claims": {
-            "medical": "Medical expenses",
-            "travel": "Travel allowance",
-            "equipment": "Equipment"
-        },
-        "approvals": {
-            "leave": "Annual leave",
-            "purchase": "Purchase order",
-            "overtime": "Overtime hours"
-        },
-        "people": {
-            "sara": "Sara Adel",
-            "omar": "Omar Nabil",
-            "lina": "Lina Farid"
-        },
-        "types": {
-            "leave": "Leave",
-            "purchase": "Purchase",
-            "time": "Time"
+            "requester": "Requester",
+            "policy": "Policy",
+            "decision": "Decision"
         }
     },
     "ask": {
@@ -227,18 +196,31 @@
     },
     "approvals": {
         "listTitle": "Approval queue",
-        "description": "Decisions that still need a person to accept, reject, or edit.",
+        "description": "Pending claim decisions that still need an admin to accept, reject, or edit.",
         "empty": "No decisions are waiting for approval",
+        "unauthorized": "Only admins can review approvals.",
+        "loadFailed": "Could not load approvals",
+        "previous": "Previous",
+        "next": "Next",
+        "page": "Page {{page}} of {{pages}}",
         "columns": {
-            "policy": "Policy number",
+            "claimNumber": "Claim number",
+            "policy": "Policy",
             "type": "Type",
             "decision": "Proposed decision",
             "anomalies": "Anomalies",
             "action": "Action"
         },
+        "statuses": {
+            "PENDING": "Pending",
+            "APPROVED": "Approved",
+            "REJECTED": "Rejected",
+            "EDITED_AND_APPROVED": "Edited and approved",
+            "CANCELLED": "Cancelled"
+        },
         "review": "Review",
         "reviewTitle": "Review decision",
-        "reviewDescription": "Read the proposed decision, the reason, the sources, the calculation, and anything unusual.",
+        "reviewDescription": "Read the AI recommendation, then accept it, reject it, or edit the final payout.",
         "back": "Back to the queue",
         "missing": "This decision is no longer in the queue",
         "proposed": "Proposed decision",
@@ -247,64 +229,33 @@
         "calculation": "Calculation",
         "calcItem": "Item",
         "calcAmount": "Amount",
+        "calcClaimed": "Claimed",
+        "calcLimit": "Coverage limit",
+        "calcDeductible": "Deductible",
+        "calcPayout": "AI payout",
         "anomalies": "Anomalies",
         "noAnomalies": "No anomalies",
         "anomalyCount": "{{count}} anomalies",
+        "versionValue": "Version {{version}}",
+        "pageValue": "Page {{page}}",
         "accept": "Accept",
         "reject": "Reject",
         "editAccept": "Edit and accept",
-        "editedDecision": "Edited decision",
+        "finalDecision": "Final decision",
+        "finalPayout": "Final payout",
+        "payoutRequired": "Enter a final payout",
         "comment": "Comment",
         "commentHint": "Required when you reject or edit",
         "commentRequired": "A comment is required",
-        "decisionRequired": "The edited decision is required",
-        "justificationRequired": "Justification is required",
         "confirmReject": "Confirm rejection",
         "confirmEdit": "Confirm edit and accept",
         "cancel": "Cancel",
-        "samples": {
-            "medical": {
-                "type": "Medical claim",
-                "decision": "Approve EGP 1,250",
-                "justification": "The invoice falls within the medical limit after the deductible.",
-                "citePolicy": "Policy, medical clause",
-                "citePolicyText": "Emergency visits are covered at 90% after the deductible.",
-                "citeInvoice": "Clinic invoice",
-                "citeInvoiceText": "Invoice total is EGP 1,500 on the visit date.",
-                "invoice": "Invoice",
-                "cover": "Coverage at 90%",
-                "deductible": "Deductible",
-                "payable": "Amount payable",
-                "late": "The visit was reported two days later"
-            },
-            "theft": {
-                "type": "Theft claim",
-                "decision": "Partially approve EGP 6,000 of EGP 8,700",
-                "justification": "The device is covered, but the police report is missing, so a lower amount is proposed.",
-                "citeClause": "Policy, theft clause",
-                "citeClauseText": "Portable devices are covered when a police report is attached.",
-                "citeInvoice": "Device invoice",
-                "citeInvoiceText": "The claimed device was purchased for EGP 8,700.",
-                "claimed": "Claimed amount",
-                "excluded": "Uncovered accessories",
-                "depreciation": "Depreciation",
-                "payable": "Proposed amount",
-                "missingReport": "Police report is not attached",
-                "aboveAverage": "The amount is above the average for this category"
-            },
-            "fire": {
-                "type": "Fire claim",
-                "decision": "Approve EGP 22,000",
-                "justification": "The kitchen damage is documented and falls under fire coverage.",
-                "citeClause": "Policy, fire clause",
-                "citeClauseText": "Fire damage is covered up to the stated limit.",
-                "citeSurvey": "Survey report",
-                "citeSurveyText": "The survey estimates the kitchen damage at EGP 25,000.",
-                "survey": "Survey estimate",
-                "limit": "Coverage limit",
-                "payable": "Amount payable",
-                "lateNotice": "Notice was sent 40 days after the incident"
-            }
+        "errors": {
+            "UNAUTHORIZED_REVIEWER": "Only admins can review approvals.",
+            "APPROVAL_NOT_PENDING": "This approval is no longer pending.",
+            "INVALID_REJECTION_REASON": "A rejection comment is required.",
+            "INVALID_FINAL_PAYOUT": "That payout is above the allowed limit.",
+            "failed": "Could not complete this review."
         }
     },
     "header": {
