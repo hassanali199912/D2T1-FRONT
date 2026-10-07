@@ -1,0 +1,282 @@
+{
+    "welcome": "welcome",
+    "nav": {
+        "dashboard": "Dashboard",
+        "documents": "Documents",
+        "askAnswers": "Ask & answers",
+        "claims": "Claims",
+        "approvals": "Approvals"
+    },
+    "dashboard": {
+        "description": "Shortcuts into your work, with your documents, claims, and decisions waiting for approval.",
+        "hints": {
+            "documents": "Files and forms",
+            "askAnswers": "Questions and replies",
+            "claims": "Expense requests",
+            "approvals": "Decisions waiting on you"
+        },
+        "tables": {
+            "documents": "My documents",
+            "claims": "My claims",
+            "approvals": "Approvable"
+        },
+        "columns": {
+            "name": "Name",
+            "type": "Type",
+            "version": "Version",
+            "updated": "Updated",
+            "status": "Status",
+            "number": "Number",
+            "subject": "Subject",
+            "amount": "Amount",
+            "submitted": "Submitted",
+            "request": "Request",
+            "requester": "Requester",
+            "policy": "Policy",
+            "decision": "Decision"
+        }
+    },
+    "ask": {
+        "emptyTitle": "Ask a question",
+        "description": "Questions are searched against the indexed policies. This chat is not saved.",
+        "emptyHint": "Ask about an indexed policy. This chat is not saved.",
+        "placeholder": "Write your question",
+        "send": "Send",
+        "thinking": "Answering…",
+        "citations": "Citations",
+        "version": "Version {{version}}",
+        "page": "Page {{page}}",
+        "noEvidence": "Not enough information in the indexed policies.",
+        "failed": "Could not search the policies."
+    },
+    "documents": {
+        "listTitle": "My documents",
+        "description": "Policies you upload as PDF or Word. Each file is saved, then indexed.",
+        "add": "Add document",
+        "uploadTitle": "Upload a policy",
+        "dropHint": "Drop a PDF or Word file here",
+        "dropDetail": "or click to browse. PDF or DOCX, up to 10 MB.",
+        "upload": "Upload",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "deleteConfirm": "Delete this policy and its file?",
+        "uploadFailed": "Upload failed",
+        "loadFailed": "Could not load policies",
+        "deleteFailed": "Could not delete this policy",
+        "fileRequired": "Choose a PDF or DOCX file",
+        "fileInvalid": "Only PDF and DOCX files are allowed",
+        "fileTooLarge": "The file must be 10 MB or smaller",
+        "nameRequired": "Name is required",
+        "nameTooLong": "Name must be 160 characters or fewer",
+        "versionRequired": "Version is required",
+        "versionTooLong": "Version must be 20 characters or fewer",
+        "effectiveFromRequired": "Effective from is required",
+        "columns": {
+            "name": "Name",
+            "type": "Type",
+            "language": "Language",
+            "version": "Version",
+            "effectiveFrom": "Effective from",
+            "status": "Status",
+            "actions": "Actions"
+        },
+        "fields": {
+            "version": "Version",
+            "language": "Language",
+            "effectiveFrom": "Effective from",
+            "effectiveTo": "Effective to",
+            "description": "Description"
+        },
+        "types": {
+            "HEALTH": "Health",
+            "MOTOR": "Motor",
+            "PROPERTY": "Property"
+        },
+        "languages": {
+            "ar": "Arabic",
+            "en": "English"
+        },
+        "statuses": {
+            "UPLOADED": "Uploaded",
+            "PROCESSING": "Processing",
+            "INDEXED": "Indexed",
+            "FAILED": "Failed"
+        },
+        "stages": {
+            "EXTRACTING": "Extracting",
+            "CLEANING": "Cleaning",
+            "CHUNKING": "Chunking",
+            "EMBEDDING": "Embedding",
+            "INDEXING": "Indexing"
+        }
+    },
+    "claims": {
+        "listTitle": "Claims",
+        "description": "Submitted claims, their status, and who created them.",
+        "add": "New claim",
+        "formTitle": "New claim",
+        "formDescription": "Choose a policy and describe the incident. The assistant then reviews the claim against that policy.",
+        "create": "Create",
+        "submitReview": "Send for review",
+        "cancel": "Cancel",
+        "back": "Back to claims",
+        "loadFailed": "Could not load claims",
+        "previous": "Previous",
+        "next": "Next",
+        "page": "Page {{page}} of {{pages}}",
+        "policyRequired": "Policy is required",
+        "dateRequired": "Incident date is required",
+        "dateFuture": "Incident date cannot be after today",
+        "typeRequired": "Type is required",
+        "amountRequired": "Amount is required",
+        "amountInvalid": "Enter an amount greater than zero",
+        "descriptionRequired": "Description is required",
+        "columns": {
+            "claimNumber": "Claim number",
+            "policy": "Policy",
+            "incidentDate": "Incident date",
+            "type": "Type",
+            "amount": "Amount",
+            "description": "Description",
+            "status": "Status",
+            "createdBy": "Created by"
+        },
+        "types": {
+            "COLLISION": "Collision",
+            "THEFT": "Theft",
+            "FIRE": "Fire",
+            "OTHER": "Other"
+        },
+        "languages": {
+            "ar": "Arabic",
+            "en": "English"
+        },
+        "statuses": {
+            "DRAFT": "Draft",
+            "SUBMITTED": "Submitted",
+            "UNDER_REVIEW": "Under review",
+            "APPROVED": "Approved",
+            "REJECTED": "Rejected"
+        },
+        "decisions": {
+            "APPROVE": "Approve",
+            "REJECT": "Reject",
+            "REVIEW": "Review"
+        },
+        "errors": {
+            "POLICY_NOT_FOUND": "That policy was not found.",
+            "INVALID_INCIDENT_DATE": "The incident date is not valid.",
+            "NO_APPLICABLE_POLICY_VERSION": "No single policy version covers that incident date.",
+            "UNAUTHORIZED_CLAIM_ACCESS": "You cannot open this claim.",
+            "ANALYSIS_FAILED": "Analysis failed.",
+            "failed": "Could not save or analyze this claim."
+        },
+        "ai": {
+            "title": "Assistant response",
+            "idle": "Send the claim and the assistant will review it in this section.",
+            "processing": "The assistant is still processing this request.",
+            "waiting": "Waiting for the result.",
+            "noEvidence": "Not enough information in the policy to analyze this claim.",
+            "recommendation": "Recommendation",
+            "financials": "Financials",
+            "claimed": "Claimed",
+            "limit": "Coverage limit",
+            "deductible": "Deductible",
+            "payout": "Payout",
+            "coverage": "Coverage",
+            "covered": "Covered",
+            "notCovered": "Not covered",
+            "exclusions": "Exclusions",
+            "anomalies": "Anomalies",
+            "citations": "Citations",
+            "version": "Version",
+            "versionValue": "Version {{version}}",
+            "page": "Page {{page}}"
+        }
+    },
+    "approvals": {
+        "listTitle": "Approval queue",
+        "description": "Pending claim decisions that still need an admin to accept, reject, or edit.",
+        "empty": "No decisions are waiting for approval",
+        "unauthorized": "Only admins can review approvals.",
+        "loadFailed": "Could not load approvals",
+        "previous": "Previous",
+        "next": "Next",
+        "page": "Page {{page}} of {{pages}}",
+        "columns": {
+            "claimNumber": "Claim number",
+            "policy": "Policy",
+            "type": "Type",
+            "decision": "Proposed decision",
+            "anomalies": "Anomalies",
+            "action": "Action"
+        },
+        "statuses": {
+            "PENDING": "Pending",
+            "APPROVED": "Approved",
+            "REJECTED": "Rejected",
+            "EDITED_AND_APPROVED": "Edited and approved",
+            "CANCELLED": "Cancelled"
+        },
+        "review": "Review",
+        "reviewTitle": "Review decision",
+        "reviewDescription": "Read the AI recommendation, then accept it, reject it, or edit the final payout.",
+        "back": "Back to the queue",
+        "missing": "This decision is no longer in the queue",
+        "proposed": "Proposed decision",
+        "justification": "Justification",
+        "citations": "Citations",
+        "calculation": "Calculation",
+        "calcItem": "Item",
+        "calcAmount": "Amount",
+        "calcClaimed": "Claimed",
+        "calcLimit": "Coverage limit",
+        "calcDeductible": "Deductible",
+        "calcPayout": "AI payout",
+        "anomalies": "Anomalies",
+        "noAnomalies": "No anomalies",
+        "anomalyCount": "{{count}} anomalies",
+        "versionValue": "Version {{version}}",
+        "pageValue": "Page {{page}}",
+        "accept": "Accept",
+        "reject": "Reject",
+        "editAccept": "Edit and accept",
+        "finalDecision": "Final decision",
+        "finalPayout": "Final payout",
+        "payoutRequired": "Enter a final payout",
+        "comment": "Comment",
+        "commentHint": "Required when you reject or edit",
+        "commentRequired": "A comment is required",
+        "confirmReject": "Confirm rejection",
+        "confirmEdit": "Confirm edit and accept",
+        "cancel": "Cancel",
+        "errors": {
+            "UNAUTHORIZED_REVIEWER": "Only admins can review approvals.",
+            "APPROVAL_NOT_PENDING": "This approval is no longer pending.",
+            "INVALID_REJECTION_REASON": "A rejection comment is required.",
+            "INVALID_FINAL_PAYOUT": "That payout is above the allowed limit.",
+            "failed": "Could not complete this review."
+        }
+    },
+    "header": {
+        "logout": "Log out",
+        "guest": "Guest",
+        "employee": "Employee"
+    },
+    "login": {
+        "title": "Sign in",
+        "subtitle": "Use your work email and password",
+        "email": "Email",
+        "password": "Password",
+        "submit": "Sign in",
+        "show": "Show",
+        "hide": "Hide",
+        "or": "or continue as",
+        "admin": "Admin",
+        "employees": "Employees",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Enter a valid email",
+        "passwordRequired": "Password is required",
+        "failed": "Could not sign in. Check the email and password."
+    }
+}

@@ -1,0 +1,282 @@
+{
+    "welcome": "اهلا وسهلا",
+    "nav": {
+        "dashboard": "لوحة التحكم",
+        "documents": "المستندات",
+        "askAnswers": "الأسئلة والأجوبة",
+        "claims": "المطالبات",
+        "approvals": "الموافقات"
+    },
+    "dashboard": {
+        "description": "اختصارات للعمل، مع مستنداتك ومطالباتك والقرارات التي تنتظر الموافقة.",
+        "hints": {
+            "documents": "الملفات والنماذج",
+            "askAnswers": "الأسئلة والردود",
+            "claims": "طلبات الصرف",
+            "approvals": "قرارات بانتظارك"
+        },
+        "tables": {
+            "documents": "مستنداتي",
+            "claims": "مطالباتي",
+            "approvals": "بانتظار الموافقة"
+        },
+        "columns": {
+            "name": "الاسم",
+            "type": "النوع",
+            "version": "الإصدار",
+            "updated": "آخر تحديث",
+            "status": "الحالة",
+            "number": "الرقم",
+            "subject": "الموضوع",
+            "amount": "المبلغ",
+            "submitted": "تاريخ التقديم",
+            "request": "الطلب",
+            "requester": "مقدم الطلب",
+            "policy": "الوثيقة",
+            "decision": "القرار"
+        }
+    },
+    "ask": {
+        "emptyTitle": "اسأل سؤالاً",
+        "description": "يُبحث السؤال في الوثائق المفهرسة. هذه المحادثة لا تُحفظ.",
+        "emptyHint": "اسأل عن وثيقة مفهرسة. هذه المحادثة لا تُحفظ.",
+        "placeholder": "اكتب سؤالك",
+        "send": "إرسال",
+        "thinking": "جارٍ الإجابة…",
+        "citations": "الاستشهادات",
+        "version": "الإصدار {{version}}",
+        "page": "صفحة {{page}}",
+        "noEvidence": "لا توجد معلومات كافية في الوثائق المفهرسة.",
+        "failed": "تعذر البحث في الوثائق."
+    },
+    "documents": {
+        "listTitle": "مستنداتي",
+        "description": "وثائق ترفعها بصيغة PDF أو وورد. يُحفظ الملف ثم تُفهرس محتوياته.",
+        "add": "إضافة مستند",
+        "uploadTitle": "رفع وثيقة",
+        "dropHint": "أفلت ملف PDF أو وورد هنا",
+        "dropDetail": "أو اضغط للاختيار. PDF أو DOCX، بحد أقصى 10 ميجابايت.",
+        "upload": "رفع",
+        "cancel": "إلغاء",
+        "delete": "حذف",
+        "deleteConfirm": "حذف هذه الوثيقة وملفها؟",
+        "uploadFailed": "تعذر الرفع",
+        "loadFailed": "تعذر تحميل الوثائق",
+        "deleteFailed": "تعذر حذف هذه الوثيقة",
+        "fileRequired": "اختر ملف PDF أو DOCX",
+        "fileInvalid": "يُسمح بملفات PDF و DOCX فقط",
+        "fileTooLarge": "يجب ألا يتجاوز الملف 10 ميجابايت",
+        "nameRequired": "الاسم مطلوب",
+        "nameTooLong": "الاسم 160 حرفاً كحد أقصى",
+        "versionRequired": "الإصدار مطلوب",
+        "versionTooLong": "الإصدار 20 حرفاً كحد أقصى",
+        "effectiveFromRequired": "تاريخ البداية مطلوب",
+        "columns": {
+            "name": "الاسم",
+            "type": "النوع",
+            "language": "اللغة",
+            "version": "الإصدار",
+            "effectiveFrom": "ساري من",
+            "status": "الحالة",
+            "actions": "إجراءات"
+        },
+        "fields": {
+            "version": "الإصدار",
+            "language": "اللغة",
+            "effectiveFrom": "ساري من",
+            "effectiveTo": "ساري حتى",
+            "description": "الوصف"
+        },
+        "types": {
+            "HEALTH": "صحي",
+            "MOTOR": "سيارات",
+            "PROPERTY": "ممتلكات"
+        },
+        "languages": {
+            "ar": "العربية",
+            "en": "الإنجليزية"
+        },
+        "statuses": {
+            "UPLOADED": "مرفوع",
+            "PROCESSING": "قيد المعالجة",
+            "INDEXED": "مفهرس",
+            "FAILED": "فشل"
+        },
+        "stages": {
+            "EXTRACTING": "استخراج",
+            "CLEANING": "تنظيف",
+            "CHUNKING": "تقسيم",
+            "EMBEDDING": "تضمين",
+            "INDEXING": "فهرسة"
+        }
+    },
+    "claims": {
+        "listTitle": "المطالبات",
+        "description": "المطالبات المقدّمة وحالتها ومن أنشأها.",
+        "add": "مطالبة جديدة",
+        "formTitle": "مطالبة جديدة",
+        "formDescription": "اختر وثيقة وصف الحادث. يراجع المساعد المطالبة مقابل تلك الوثيقة.",
+        "create": "إنشاء",
+        "submitReview": "إرسال للمراجعة",
+        "cancel": "إلغاء",
+        "back": "العودة إلى المطالبات",
+        "loadFailed": "تعذر تحميل المطالبات",
+        "previous": "السابق",
+        "next": "التالي",
+        "page": "صفحة {{page}} من {{pages}}",
+        "policyRequired": "الوثيقة مطلوبة",
+        "dateRequired": "تاريخ الحادث مطلوب",
+        "dateFuture": "تاريخ الحادث لا يمكن أن يكون بعد اليوم",
+        "typeRequired": "النوع مطلوب",
+        "amountRequired": "المبلغ مطلوب",
+        "amountInvalid": "أدخل مبلغاً أكبر من صفر",
+        "descriptionRequired": "الوصف مطلوب",
+        "columns": {
+            "claimNumber": "رقم المطالبة",
+            "policy": "الوثيقة",
+            "incidentDate": "تاريخ الحادث",
+            "type": "النوع",
+            "amount": "المبلغ",
+            "description": "الوصف",
+            "status": "الحالة",
+            "createdBy": "أنشأها"
+        },
+        "types": {
+            "COLLISION": "تصادم",
+            "THEFT": "سرقة",
+            "FIRE": "حريق",
+            "OTHER": "أخرى"
+        },
+        "languages": {
+            "ar": "العربية",
+            "en": "الإنجليزية"
+        },
+        "statuses": {
+            "DRAFT": "مسودة",
+            "SUBMITTED": "مقدّمة",
+            "UNDER_REVIEW": "قيد المراجعة",
+            "APPROVED": "موافق عليها",
+            "REJECTED": "مرفوضة"
+        },
+        "decisions": {
+            "APPROVE": "قبول",
+            "REJECT": "رفض",
+            "REVIEW": "مراجعة"
+        },
+        "errors": {
+            "POLICY_NOT_FOUND": "لم يُعثر على هذه الوثيقة.",
+            "INVALID_INCIDENT_DATE": "تاريخ الحادث غير صالح.",
+            "NO_APPLICABLE_POLICY_VERSION": "لا يوجد إصدار واحد يغطي تاريخ الحادث.",
+            "UNAUTHORIZED_CLAIM_ACCESS": "لا يمكنك فتح هذه المطالبة.",
+            "ANALYSIS_FAILED": "فشلت التحليل.",
+            "failed": "تعذر حفظ المطالبة أو تحليلها."
+        },
+        "ai": {
+            "title": "رد المساعد",
+            "idle": "أرسل المطالبة ليراجعها المساعد في هذا القسم.",
+            "processing": "المساعد ما زال يعالج الطلب.",
+            "waiting": "بانتظار النتيجة.",
+            "noEvidence": "لا توجد معلومات كافية في الوثيقة لتحليل هذه المطالبة.",
+            "recommendation": "التوصية",
+            "financials": "المبالغ",
+            "claimed": "المبلغ المطالب به",
+            "limit": "حد التغطية",
+            "deductible": "التحمل",
+            "payout": "التعويض",
+            "coverage": "التغطية",
+            "covered": "مغطى",
+            "notCovered": "غير مغطى",
+            "exclusions": "الاستثناءات",
+            "anomalies": "الشذوذات",
+            "citations": "الاستشهادات",
+            "version": "الإصدار",
+            "versionValue": "الإصدار {{version}}",
+            "page": "صفحة {{page}}"
+        }
+    },
+    "approvals": {
+        "listTitle": "طابور الموافقات",
+        "description": "قرارات المطالبات التي ما زالت تحتاج مديراً لقبولها أو رفضها أو تعديلها.",
+        "empty": "لا توجد قرارات بانتظار الموافقة",
+        "unauthorized": "الموافقات متاحة للمديرين فقط.",
+        "loadFailed": "تعذر تحميل الموافقات",
+        "previous": "السابق",
+        "next": "التالي",
+        "page": "صفحة {{page}} من {{pages}}",
+        "columns": {
+            "claimNumber": "رقم المطالبة",
+            "policy": "الوثيقة",
+            "type": "النوع",
+            "decision": "القرار المقترح",
+            "anomalies": "الشذوذات",
+            "action": "الإجراء"
+        },
+        "statuses": {
+            "PENDING": "بانتظار الموافقة",
+            "APPROVED": "موافق عليها",
+            "REJECTED": "مرفوضة",
+            "EDITED_AND_APPROVED": "عُدّلت وقُبلت",
+            "CANCELLED": "ملغاة"
+        },
+        "review": "مراجعة",
+        "reviewTitle": "مراجعة القرار",
+        "reviewDescription": "اطلع على توصية المساعد، ثم اقبلها أو ارفضها أو عدّل مبلغ التعويض النهائي.",
+        "back": "العودة إلى الطابور",
+        "missing": "هذا القرار لم يعد في الطابور",
+        "proposed": "القرار المقترح",
+        "justification": "التبرير",
+        "citations": "الاستشهادات",
+        "calculation": "جدول الحساب",
+        "calcItem": "البند",
+        "calcAmount": "المبلغ",
+        "calcClaimed": "المبلغ المطالب به",
+        "calcLimit": "حد التغطية",
+        "calcDeductible": "التحمل",
+        "calcPayout": "تعويض المساعد",
+        "anomalies": "الشذوذات",
+        "noAnomalies": "لا توجد شذوذات",
+        "anomalyCount": "{{count}} شذوذات",
+        "versionValue": "الإصدار {{version}}",
+        "pageValue": "صفحة {{page}}",
+        "accept": "قبول",
+        "reject": "رفض",
+        "editAccept": "تعديل وقبول",
+        "finalDecision": "القرار النهائي",
+        "finalPayout": "التعويض النهائي",
+        "payoutRequired": "أدخل التعويض النهائي",
+        "comment": "التعليق",
+        "commentHint": "إجباري عند الرفض أو التعديل",
+        "commentRequired": "التعليق إجباري",
+        "confirmReject": "تأكيد الرفض",
+        "confirmEdit": "تأكيد التعديل والقبول",
+        "cancel": "إلغاء",
+        "errors": {
+            "UNAUTHORIZED_REVIEWER": "الموافقات متاحة للمديرين فقط.",
+            "APPROVAL_NOT_PENDING": "هذه الموافقة لم تعد بانتظار القرار.",
+            "INVALID_REJECTION_REASON": "تعليق الرفض مطلوب.",
+            "INVALID_FINAL_PAYOUT": "التعويض أعلى من الحد المسموح.",
+            "failed": "تعذر إتمام هذه المراجعة."
+        }
+    },
+    "header": {
+        "logout": "تسجيل الخروج",
+        "guest": "زائر",
+        "employee": "موظف"
+    },
+    "login": {
+        "title": "تسجيل الدخول",
+        "subtitle": "أدخل بريدك الإلكتروني وكلمة المرور",
+        "email": "البريد الإلكتروني",
+        "password": "كلمة المرور",
+        "submit": "تسجيل الدخول",
+        "show": "إظهار",
+        "hide": "إخفاء",
+        "or": "أو ادخل بحساب",
+        "admin": "مدير",
+        "employees": "موظفون",
+        "emailRequired": "البريد الإلكتروني مطلوب",
+        "emailInvalid": "أدخل بريداً إلكترونياً صحيحاً",
+        "passwordRequired": "كلمة المرور مطلوبة",
+        "failed": "تعذر تسجيل الدخول. تحقق من البريد وكلمة المرور."
+    }
+}

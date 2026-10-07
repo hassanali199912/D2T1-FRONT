@@ -1,0 +1,47 @@
+---
+description: Project map and conventions for the Vite + React + MUI frontend
+alwaysApply: true
+---
+
+# front
+
+Private Vite SPA. Add features under `src/`.
+
+## Stack
+
+- React 19 + TypeScript, bundled by Vite 8 (`@vitejs/plugin-react`)
+- UI: MUI 9 with Emotion (`@mui/material`, `@emotion/react`, `@emotion/styled`)
+- Routing: `react-router-dom` (`RouterProvider` in `src/routes`)
+- Lint: ESLint flat config in `eslint.config.js` for `**/*.{ts,tsx}`
+
+## Entry
+
+`index.html` mounts `#root` → `src/main.tsx` (StrictMode) → `MainProvider` → `App` → `src/routes`. `MainProvider` only mounts `ThemeProvider`, `CssBaseline`, and `LanguageSwitch`. Language toggle, document `lang`/`dir`, and `localStorage` live in `src/language/config.ts` (`switchLanguage`, `nextLanguageLabel`). Static files go in `public/`.
+
+## TypeScript
+
+`tsconfig.app.json` covers `src`. Keep these constraints:
+
+- `verbatimModuleSyntax`: use `import type` for types
+- `allowImportingTsExtensions`: import local modules with `.ts` / `.tsx`
+- `noUnusedLocals` / `noUnusedParameters`: delete unused symbols
+- `erasableSyntaxOnly`: no enums; use unions and `as const`
+
+## Commands
+
+- `npm run dev` — Vite dev server
+- `npm run build` — `tsc -b` then `vite build`
+- `npm run lint` — ESLint
+- `npm run preview` — serve the production build
+
+## UI
+
+Use functional components. Style with MUI (`sx` or `styled`) instead of new CSS files. Keep language and direction logic in `src/language/config.ts`. Do not put it in `MainProvider` or `main.tsx`.
+
+```tsx
+import Button from '@mui/material/Button'
+
+export default function App() {
+  return <Button variant="contained">Save</Button>
+}
+```
