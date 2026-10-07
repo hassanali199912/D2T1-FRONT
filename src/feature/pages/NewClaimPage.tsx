@@ -1,45 +1,55 @@
-import { useEffect, useRef, useState } from 'react'
-import { Box, Button, Paper, Stack, Typography } from '@mui/material'
+import { useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import { Box, Button, CircularProgress, Paper, Stack, Typography } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
-import ClaimAiPanel, { type ClaimAiPhase } from './claims/ClaimAiPanel.tsx'
-import ClaimForm, { type ClaimDraft } from './claims/ClaimForm.tsx'
-import { addClaim, setClaimStatus } from './claims/store.ts'
-import type { ClaimType } from './claims/types.ts'
+import { queryClient } from '../../config/queryBase/queryClient.ts'
+import { analyzeClaim, claimErrorMessage, claimTypesQueryKey, claimsQueryKey, createClaim, listClaimTypes } from '../claims/api.ts'
+import type { ClaimAnalysis, CreateClaimInput } from '../claims/types.ts'
+import { listPolicyOptions, policyOptionsQueryKey } from '../policies/api.ts'
 import { useTranslation } from '../../language/index.ts'
 import { paths } from '../../routes/paths.ts'
+import ClaimAiPanel, { type ClaimAiPhase } from './claims/ClaimAiPanel.tsx'
+import ClaimForm from './claims/ClaimForm.tsx'
+
+const knownErrors = [
+    'POLICY_NOT_FOUND',
+    'INVALID_INCIDENT_DATE',
+    'NO_APPLICABLE_POLICY_VERSION',
+    'UNAUTHORIZED_CLAIM_ACCESS',
+    'ANALYSIS_FAILED',
+] as const
 
 export default function NewClaimPage() {
     const { t } = useTranslation()
     const [phase, setPhase] = useState<ClaimAiPhase>('idle')
-    const [subject, setSubject] = useState<{ policyNumber: string; type: ClaimType } | null>(null)
-    const [resultKey, setResultKey] = useState('')
-    const timer = useRef<number | null>(null)
-    const panelRef = useRef<HTMLDivElement>(null)
+    const [analysis, setAnalysis] = useState<ClaimAnalysis | null>(null)
+    const [formError, setFormError] = useState('')
+    const [panelError, setPanelError] = useState('')
+    const options = useQuery({ queryKey: policyOptionsQueryKey, queryFn: listPolicyOptions })
+    const types = useQuery({ queryKey: claimTypesQueryKey, queryFn: listClaimTypes })
+    const loading = options.isPending || types.isPending
+    const loadError = options.isError || types.isError
 
-    useEffect(() => {
-        return () => {
-            if (timer.current !== null) window.clearTimeout(timer.current)
-        }
-    }, [])
-
-    function handleCreate(draft: ClaimDraft) {
-        const id = crypto.randomUUID()
-        addClaim({
-            id,
-            status: 'running',
-            ...draft,
-        })
-        setSubject({ policyNumber: draft.policyNumber, type: draft.type })
-        setResultKey('')
+    async function handleCreate(draft: CreateClaimInput) {
+        setFormError('')
+        setPanelError('')
+        setAnalysis(null)
         setPhase('processing')
-        if (timer.current !== null) window.clearTimeout(timer.current)
-        timer.current = window.setTimeout(() => {
-            setClaimStatus(id, 'awaiting_approval')
-            setResultKey(`claims.ai.results.${draft.type}`)
-            setPhase('ready')
-            timer.current = null
-        }, 2400)
-        panelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+        try {
+            const claim = await createClaim(draft)
+            await queryClient.invalidateQueries({ queryKey: claimsQueryKey })
+            try {
+                const result = await analyzeClaim(claim.id)
+                setAnalysis(result)
+                setPhase('ready')
+            } catch (error) {
+                setPanelError(errorText(error, t))
+                setPhase('error')
+            }
+        } catch (error) {
+            setFormError(errorText(error, t))
+            setPhase('idle')
+        }
     }
 
     return (
@@ -55,26 +65,47 @@ export default function NewClaimPage() {
                     {t('claims.back')}
                 </Button>
             </Stack>
-            <Box
-                sx={{
-                    display: 'grid',
-                    gap: 2,
-                    alignItems: 'stretch',
-                    gridTemplateColumns: { xs: '1fr', sm: 'minmax(0, 1.15fr) minmax(240px, 0.85fr)' },
-                }}
-            >
-                <Paper sx={{ p: { xs: 2, sm: 3 } }}>
-                    <ClaimForm disabled={phase === 'processing'} onSubmit={handleCreate} />
-                </Paper>
-                <Box ref={panelRef} sx={{ minWidth: 0 }}>
-                    <ClaimAiPanel
-                        phase={phase}
-                        policyNumber={subject?.policyNumber}
-                        type={subject?.type}
-                        resultKey={resultKey}
-                    />
+            {loading ? (
+                <Box sx={{ display: 'grid', placeItems: 'center', py: 6 }}>
+                    <CircularProgress />
                 </Box>
-            </Box>
+            ) : null}
+            {loadError ? (
+                <Typography variant="body2" color="error">
+                    {claimErrorMessage(options.error ?? types.error) || t('claims.loadFailed')}
+                </Typography>
+            ) : null}
+            {options.data && types.data ? (
+                <Box
+                    sx={{
+                        display: 'grid',
+                        gap: 2,
+                        alignItems: 'stretch',
+                        gridTemplateColumns: { xs: '1fr', sm: 'minmax(0, 1.15fr) minmax(240px, 0.85fr)' },
+                    }}
+                >
+                    <Paper sx={{ p: { xs: 2, sm: 3 } }}>
+                        <ClaimForm
+                            options={options.data}
+                            types={types.data}
+                            disabled={phase === 'processing'}
+                            error={formError}
+                            onSubmit={(draft) => {
+                                void handleCreate(draft)
+                            }}
+                        />
+                    </Paper>
+                    <Box sx={{ minWidth: 0 }}>
+                        <ClaimAiPanel phase={phase} analysis={analysis} error={panelError} />
+                    </Box>
+                </Box>
+            ) : null}
         </Stack>
     )
+}
+
+function errorText(error: unknown, t: (key: string) => string) {
+    const message = claimErrorMessage(error)
+    if (knownErrors.some((code) => code === message)) return t(`claims.errors.${message}`)
+    return message || t('claims.errors.failed')
 }
